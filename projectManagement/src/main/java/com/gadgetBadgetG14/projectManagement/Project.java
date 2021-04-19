@@ -23,6 +23,13 @@ public class Project {
 	public String getDescription() {
 		return description;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Project [p_id=" + p_id + ", p_name=" + p_name + ", description=" + description + ", researcher_id="
+				+ researcher_id + "]";
+	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
