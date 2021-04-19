@@ -6,6 +6,8 @@ public class Project {
 	public String p_name;
 	public String description;
 	public int researcher_id;
+	
+	
 	public int getP_id() {
 		return p_id;
 	}
