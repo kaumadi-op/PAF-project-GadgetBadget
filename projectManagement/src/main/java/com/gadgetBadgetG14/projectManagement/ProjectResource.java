@@ -5,13 +5,20 @@ package com.gadgetBadgetG14.projectManagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+
 
 @Path("/projects")
 
@@ -32,6 +39,17 @@ public class ProjectResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Project createProject(Project p1) {
 		return pr.createProject(p1);
+	}
+	
+	@GET
+	@Path("/project/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getCities(@PathParam("p_id") String p_id) {
+	Project res = new Project();
+	res = pr.getprojectid(Integer.parseInt(p_id));
+	Gson test = new Gson();
+	String jsonObject = test.toJson(res);
+	return jsonObject;
 	}
 	
 	
