@@ -1,9 +1,14 @@
 package com.gadgetBadgetG14.projectManagement;
 
+import java.time.LocalDate;
+
 public class Project {
 	
 	public int p_id;
 	public String p_name;
+	public String type;
+	public String startDate;
+	public String endDate;
 	public String description;
 	public int researcher_id;
 	
@@ -34,11 +39,31 @@ public class Project {
 		this.researcher_id = researcher_id;
 	}
 	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	@Override
 	public String toString() {
-		return "Project [p_id=" + p_id + ", p_name=" + p_name + ", description=" + description + ", researcher_id="
-				+ researcher_id + "]";
+		return "Project [p_id=" + p_id + ", p_name=" + p_name + ", type=" + type + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", description=" + description + ", researcher_id=" + researcher_id + "]";
 	}
+	
+	
 	
 
 }
