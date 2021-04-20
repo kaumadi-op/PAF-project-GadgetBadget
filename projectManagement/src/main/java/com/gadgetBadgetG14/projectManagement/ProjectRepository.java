@@ -80,7 +80,7 @@ public class ProjectRepository {
 	}
 
 	public Project getprojectid(int p_id) {
-		String getsql = "select * from project where p_id = '"+p_id+"' ";
+		String getsql = "SELECT * FROM project WHERE p_id = '"+p_id+"' ";
 		Project pr = new Project();
 		Connection con = getconnection();
 		
@@ -106,4 +106,43 @@ public class ProjectRepository {
 		return pr;
 	}
 
+	
+	public String deleteProject(int p_id) {
+		String output = "";
+		try {
+			Connection con = getconnection();
+			
+			String deleteProject = "DELETE FROM project WHERE id = '"+p_id+"'";
+			PreparedStatement ps = con.prepareStatement(deleteProject);
+			ps.execute();
+			
+			output = "Delete Successful";
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+		
+	public String updateProject(Project project) {
+		String output = "";
+		
+		try {
+			Connection con = getconnection();
+			
+			String updateProject = "UPDATE project SET p_id='"+project.getP_id()+"',p_name='"+project.getP_name()+"',description='"+project.getDescription()+"',researcher_id='"+project.getResearcher_id()+"' WHERE id='"+project.getP_id()+"'";
+			PreparedStatement st = con.prepareStatement(updateProject);
+
+			st.executeUpdate();
+			
+			output = "Updated Successful";
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return output;
+
+	}
 }

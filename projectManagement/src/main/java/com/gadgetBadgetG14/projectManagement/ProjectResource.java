@@ -42,7 +42,7 @@ public class ProjectResource {
 	}
 	
 	@GET
-	@Path("/project/{id}")
+	@Path("/project/{p_id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getCities(@PathParam("p_id") String p_id) {
 	Project res = new Project();
@@ -52,6 +52,28 @@ public class ProjectResource {
 	return jsonObject;
 	}
 	
+	@DELETE
+	@Path("/deleteProject/{p_id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String deleteProduct(@PathParam("p_id") int p_id) {
+		return pr.deleteProject(p_id);
+	}
+	@PUT
+	@Path("/update") 
+	@Consumes(MediaType.APPLICATION_JSON) 
+	@Produces(MediaType.TEXT_PLAIN) 
 	
+	public String updateProject(Project product) 
+	{ 
+		return pr.updateProject(product);
+	}
+	
+	
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Project> getAllProjects(){
+		return pr.getAllProjects();
+	}
 
 }
