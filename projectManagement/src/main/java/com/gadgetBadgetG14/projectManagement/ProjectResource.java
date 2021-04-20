@@ -58,14 +58,16 @@ public class ProjectResource {
 	public String deleteProduct(@PathParam("p_id") int p_id) {
 		return pr.deleteProject(p_id);
 	}
+	
+	
 	@PUT
 	@Path("/update") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.TEXT_PLAIN) 
 	
-	public String updateProject(Project product) 
+	public String updateProject(Project p1) 
 	{ 
-		return pr.updateProject(product);
+		return pr.updateProject(p1);
 	}
 	
 	
