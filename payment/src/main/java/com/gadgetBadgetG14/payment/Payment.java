@@ -1,39 +1,32 @@
 package com.gadgetBadgetG14.payment;
 
 public class Payment {
-		
-	public String cardHolderName;
-	public int cardNumber;
-	public int expDate;
-	public int cvv;
-	public String getCardHolderName() {
-		return cardHolderName;
+	
+	public int paymentId;
+	public int amount;
+	public String payType;
+	
+	public int getPaymentId() {
+		return paymentId;
 	}
-	public void setCardHolderName(String cardHolderName) {
-		this.cardHolderName = cardHolderName;
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
 	}
-	public int getCardNumber() {
-		return cardNumber;
+	public int getAmount() {
+		return amount;
 	}
-	public void setCardNumber(int cardNumber) {
-		this.cardNumber = cardNumber;
-	}
-	public int getExpDate() {
-		return expDate;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	@Override
 	public String toString() {
-		return "Payment [cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber + ", expDate=" + expDate
-				+ ", cvv=" + cvv + "]";
+		return "Payment [paymentId=" + paymentId + ", amount=" + amount + ", payType=" + payType + "]";
 	}
-	public void setExpDate(int expDate) {
-		this.expDate = expDate;
+	public String getPayType() {
+		return payType;
 	}
-	public int getCvv() {
-		return cvv;
-	}
-	public void setCvv(int cvv) {
-		this.cvv = cvv;
+	public void setPayType(String payType) {
+		this.payType = payType;
 	}
 	
 }
