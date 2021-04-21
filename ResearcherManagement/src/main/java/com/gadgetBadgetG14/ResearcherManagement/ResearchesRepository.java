@@ -57,7 +57,7 @@ public class ResearchesRepository {
 	public List<AddResearches> getAllAddResearches(){
 		return researches;
 	}
-	
+	//Insert to DB
 	public AddResearches createAddResearches(AddResearches r1) {
 		String insertSql = "INSERT INTO `researches`(`researcherid`, `Name`, `ContactNo`, `Email`) VALUES (?,?,?,?)";
 		Connection con = getconnection();
