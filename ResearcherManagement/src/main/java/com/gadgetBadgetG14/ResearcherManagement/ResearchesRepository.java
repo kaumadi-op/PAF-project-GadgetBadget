@@ -57,7 +57,7 @@ public class ResearchesRepository {
 	public List<AddResearches> getAllAddResearches(){
 		return researches;
 	}
-	//Insert to DB
+	
 	public AddResearches createAddResearches(AddResearches r1) {
 		String insertSql = "INSERT INTO `researches`(`researcherid`, `Name`, `ContactNo`, `Email`) VALUES (?,?,?,?)";
 		Connection con = getconnection();
@@ -77,7 +77,7 @@ public class ResearchesRepository {
 		return r1;
 	}
 	public AddResearches getresearcherid(int researcherid) {
-		String getsql = "SELECT * FROM `researches` WHERE `researcherid`= '"+researcherid+"'";
+		String getsql = "SELECT * FROM `researches` WHERE researcherid = '"+researcherid+"' ";
 		AddResearches ud = new AddResearches();
 		Connection con = getconnection();
 		
@@ -99,8 +99,25 @@ public class ResearchesRepository {
 
 		
 	}
-
+	public String deleteAddResearches(int researcherid) {
+		String output = "";
+		try {
+			Connection con = getconnection();
+			
+			String deleteAddResearches = "DELETE FROM researches WHERE researcherid = '"+researcherid+"'";
+			PreparedStatement ps = con.prepareStatement(deleteAddResearches);
+			ps.execute();
+			
+			output = "Delete Successful";
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+		
 	
 	
 	
 }
+
