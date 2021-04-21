@@ -17,7 +17,7 @@ import jakarta.ws.rs.core.MediaType;
 public class ResearchesResource {
 	
 	ResearchesRepository sr = new ResearchesRepository();
-	
+	//Insert to DB
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<AddResearches> getAllResearches() {
