@@ -9,6 +9,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -77,5 +78,21 @@ public class ResearchesResource {
 	public String deleteProduct(@PathParam("researcherid") int researcherid) {
 		return sr.deleteAddResearches(researcherid);
 	}
-
+	@PUT
+	@Path("/update") 
+	@Consumes(MediaType.APPLICATION_JSON) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String updateProduct(AddResearches product) 
+	{ 
+	// cr.updateCustomer(product); 
+	 return "Updated";
+	}
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<AddResearches> getallcustomer(){
+		return sr.getAllAddResearches();
+	}
 }
+
+
