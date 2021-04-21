@@ -60,6 +60,8 @@ public class ResearchesResource {
 		return sr.createAddResearches(r1);
 	}
 	
+//Gson dependencies added
+	
 	@GET
 	@Path("/researcher/{researcherid}")
 	@Produces(MediaType.APPLICATION_JSON)
