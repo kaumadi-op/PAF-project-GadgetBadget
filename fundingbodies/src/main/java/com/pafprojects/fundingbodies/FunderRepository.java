@@ -2,6 +2,8 @@ package com.pafprojects.fundingbodies;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import java.sql.*;
 
 public class FunderRepository {
@@ -68,6 +70,83 @@ public class FunderRepository {
 		System.out.println(funders);
 		return f1;
 	}
+	public Funders getfundersid(int id)
+	{
+		
+		String getsql = "select * from funders where id = '"+id+"' ";
+		Funders cd = new Funders();
+		Connection con = getconnection();
+		
+		try {
+			Statement st = con.createStatement();
+			ResultSet f1 = st.executeQuery(getsql);
+			
+			while(f1.next()) {
+				
+				cd.setId(f1.getInt(1));
+				cd.setName(f1.getString(2));
+				cd.setEmail(f1.getString(3));
+				
+			}
+			
+			//con.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cd;
+		
+	}
+	public Connection getconnection() {
+		   Connection con = null;
+			String url ="Jdbc:mysql://localhost:3306/customerapiproject";
+			String username = "root";
+			String password = "";
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				con = DriverManager.getConnection(url,username,password);
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			System.out.println("success");
+			return con;
+		}
+	public String deleteFunders(int id) {
+		String output = "";
+		try {
+			Connection con = getconnection();
+			
+			String deleteFunders = "DELETE FROM funders WHERE id = '"+id+"'";
+			PreparedStatement ps = con.prepareStatement(deleteFunders);
+			ps.execute();
+			
+			output = "Delete Successful";
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+public void updateFunders(Funders funders) {
+		
+		try {
+			Connection con = getconnection();
+			
+			String updateFunders = "UPDATE funders SET id='"+funders.getId()+"',name='"+funders.getName()+"',email='"+funders.getEmail()+"' WHERE id='"+funders.getId()+"'";
+			PreparedStatement st = con.prepareStatement(updateFunders);
+			
+			
+			
+			st.executeUpdate();
+			
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 	}
 
 
@@ -78,6 +157,13 @@ public class FunderRepository {
 
 
 
+
+
+
+
+
+
+	
 
 
 
