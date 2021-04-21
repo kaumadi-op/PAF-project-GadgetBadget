@@ -2,6 +2,9 @@ package com.gadgetBadgetG14.ResearcherManagement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 import java.sql.*;
 
 public class ResearchesRepository {
@@ -115,9 +118,27 @@ public class ResearchesRepository {
 		}
 		return output;
 	}
+	public void updateAddResearches(AddResearches researches) {
 		
-	
+		try {
+			Connection con = getconnection();
+			
+			String updateAddResearches = "UPDATE researches SET researcherid='"+ researches.getResearcherid()+"',Name='"+ researches.getName()+"',ContactNo='"+ researches.getContactno()+"',Email='"+ researches.getEmail()+"' WHERE id='"+researches.getResearcherid()+"'";
+			PreparedStatement st = con.prepareStatement(updateAddResearches);
+			
+			
+			
+			st.executeUpdate();
+			
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		
+	}
 	
 	
 }
+
 
