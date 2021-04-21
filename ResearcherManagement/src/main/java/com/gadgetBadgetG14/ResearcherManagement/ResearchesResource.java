@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -17,7 +18,7 @@ import jakarta.ws.rs.core.MediaType;
 public class ResearchesResource {
 	
 	ResearchesRepository sr = new ResearchesRepository();
-	//Insert to DB
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<AddResearches> getAllResearches() {
@@ -60,8 +61,6 @@ public class ResearchesResource {
 		return sr.createAddResearches(r1);
 	}
 	
-//Gson dependencies added
-	
 	@GET
 	@Path("/researcher/{researcherid}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -72,6 +71,11 @@ public class ResearchesResource {
 		String jsonObject = test.toJson(res);
 		return jsonObject;
 	}
-	
+	@DELETE
+	@Path("/deleteAddResearches/{researcherid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String deleteProduct(@PathParam("researcherid") int researcherid) {
+		return sr.deleteAddResearches(researcherid);
+	}
 
 }
