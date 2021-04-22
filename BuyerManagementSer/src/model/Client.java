@@ -19,7 +19,7 @@ public class Client {
 		 Class.forName("com.mysql.jdbc.Driver"); 
 		 
 		 //Provide the correct details: DBServer/DBName, username, password 
-		 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/buyer", "root", ""); 
+		 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/buyer? useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", ""); 
 		 } 
 		 catch (Exception e) 
 		 {e.printStackTrace();} 
@@ -117,7 +117,7 @@ public class Client {
 		 } 
 		 return output; 
 		 } 
-		public String updateClient(String id, String fname,String NIC, String lname, String address, String contactNumber,String email, String username, String password)
+		public String updateClient(String id, String fname, String lname,String NIC, String address, String contactNumber,String email, String username, String password)
 		 { 
 		 String output = ""; 
 		 try

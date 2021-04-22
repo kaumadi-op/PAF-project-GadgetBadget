@@ -42,7 +42,7 @@
 
 		
 				{ 
-				 String output = clientObj.insertClient(id,fname, lname, NIC,address,contactNumber,email,username,password); 
+				 String output = clientObj.insertClient(id,fname,lname,NIC,address,contactNumber,email,username,password); 
 				return output; 
 				}
 		

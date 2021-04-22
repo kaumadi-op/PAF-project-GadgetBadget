@@ -18,7 +18,7 @@ public class Feedback {
 			 Class.forName("com.mysql.jdbc.Driver"); 
 			 
 			 //Provide the correct details: DBServer/DBName, username, password 
-			 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/buyer", "root", ""); 
+			 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/buyer useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", ""); 
 			 } 
 			 catch (Exception e) 
 			 {e.printStackTrace();} 
