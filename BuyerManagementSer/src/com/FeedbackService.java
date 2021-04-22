@@ -32,13 +32,14 @@ public class FeedbackService {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String insertFeedback(@FormParam("name") String name,
+	public String insertFeedback(@FormParam("fedID") String fedID,
+			@FormParam("name") String name,
 	 @FormParam("contactNo") String contactNo,
 	 @FormParam("email") String email,
 	 @FormParam("comment") String comment,
 	 @FormParam("ratetype") String ratetype)
 	{
-	 String output = feedbackObj.insertFeedback(name, contactNo, email, comment, ratetype);
+	 String output = feedbackObj.insertFeedback(fedID,name,contactNo,email,comment,ratetype);
 	return output;
 	}
 

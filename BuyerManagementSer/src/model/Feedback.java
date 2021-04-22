@@ -18,13 +18,13 @@ public class Feedback {
 			 Class.forName("com.mysql.jdbc.Driver"); 
 			 
 			 //Provide the correct details: DBServer/DBName, username, password 
-			 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/paf", "root", ""); 
+			 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/buyer", "root", ""); 
 			 } 
 			 catch (Exception e) 
 			 {e.printStackTrace();} 
 			 return con; 
 			 } 
-			public String insertFeedback( String name, String contactNo, String email, String comment, String ratetype) 
+			public String insertFeedback(String fedID, String name, String contactNo, String email, String comment, String ratetype) 
 			 { 
 			 String output = ""; 
 			 try
@@ -33,17 +33,17 @@ public class Feedback {
 			 if (con == null) 
 			 {return "Error while connecting to the database for inserting."; } 
 			 // create a prepared statement
-			 String query = " insert into feedback (`name`,`contactNo`,'email',`comment`,`ratetype`)"
+			 String query = " insert into feedback (`fedID`,`name`,`contactNo`,`email`,`comment`,`ratetype`)"
 			 + " values (?, ?, ?, ?, ?)"; 
 			 PreparedStatement preparedStmt = con.prepareStatement(query); 
 			 // binding values
 			 //preparedStmt.setInt(1, 0); 
-			// preparedStmt.setString(2, id); 
-			 preparedStmt.setString(1, name); 
-			 preparedStmt.setString(2, contactNo); 
-			 preparedStmt.setString(3,  email);
-			 preparedStmt.setString(4, comment);
-			 preparedStmt.setString(5, ratetype);
+			 preparedStmt.setString(1, fedID); 
+			 preparedStmt.setString(2, name); 
+			 preparedStmt.setString(3, contactNo); 
+			 preparedStmt.setString(4,  email);
+			 preparedStmt.setString(5, comment);
+			 preparedStmt.setString(6, ratetype);
 			 
 			 
 			// execute the statement3
@@ -78,7 +78,7 @@ public class Feedback {
 			 // iterate through the rows in the result set
 			 while (rs.next()) 
 			 { 
-			 String fedID = rs.getString("fedID"); 
+				 String fedID = Integer.toString(rs.getInt("fedID")); 
 			 String name = rs.getString("name"); 
 			 String contactNo= rs.getString("contactNo");
 			 String email = rs.getString("email"); 
@@ -88,7 +88,7 @@ public class Feedback {
 			 
 			 
 			 // Add into the html table
-			 output += "<tr><td>" + fedID + "</td>"; 
+			// output += "<tr><td>" + fedID + "</td>"; 
 			 output += "<td>" + name + "</td>"; 
 			 output += "<td>" + contactNo + "</td>"; 
 			 output += "<td>" + email + "</td>"; 
@@ -96,7 +96,7 @@ public class Feedback {
 			 output += "<td>" + ratetype + "</td>"; 
 			
 			 // buttons
-			 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>" + "<td><form method='post' action='feedback1.jsp'> + "
+			 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>" + "<td><form method='post' action='feedback1.jsp'>  "
 			 + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>" + "<input name='fedID' type='hidden' value='" + fedID  + "'>" + "</form></td></tr>";  } 
 			 con.close(); 
 			 // Complete the html table
@@ -104,7 +104,7 @@ public class Feedback {
 			 } 
 			 catch (Exception e) 
 			 { 
-			 output = "Error while reading the client."; 
+			 output = "Error while reading the feedback."; 
 			 System.err.println(e.getMessage()); 
 			 } 
 			 return output; 
@@ -154,7 +154,7 @@ public class Feedback {
 			 String query = "delete from feedback where fedID=?"; 
 			 PreparedStatement preparedStmt = con.prepareStatement(query); 
 			 // binding values
-			 preparedStmt.setString(2, fedID); 
+			 preparedStmt.setInt(1, Integer.parseInt(fedID)); 
 			 // execute the statement
 			 preparedStmt.execute(); 
 			 con.close(); 
