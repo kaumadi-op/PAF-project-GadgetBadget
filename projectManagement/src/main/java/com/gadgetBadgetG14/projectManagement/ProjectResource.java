@@ -44,7 +44,7 @@ public class ProjectResource {
 	@GET
 	@Path("/project/{p_id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getCities(@PathParam("p_id") String p_id) {
+	public String getProjects(@PathParam("p_id") String p_id) {
 	Project res = new Project();
 	res = pr.getprojectid(Integer.parseInt(p_id));
 	Gson test = new Gson();
@@ -70,6 +70,14 @@ public class ProjectResource {
 		return pr.updateProject(p1);
 	}
 	
+	
+	@GET
+	@Path("/read")
+	@Produces(MediaType.TEXT_HTML)
+	public String readItems()
+	{
+	return pr.readProjects();
+	}
 	
 	@GET
 	@Path("/")
