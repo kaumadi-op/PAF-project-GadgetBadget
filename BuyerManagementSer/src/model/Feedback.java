@@ -26,7 +26,7 @@ public class Feedback {
 			 } 
 			public String insertFeedback(String fedID, String name, String contactNo, String email, String comment, String ratetype) 
 			 { 
-			 String output = ""; 
+			 String output = "";
 			 try
 			 { 
 			 Connection con = connect(); 
