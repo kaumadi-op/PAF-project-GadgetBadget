@@ -16,6 +16,7 @@ import org.jsoup.nodes.Document;
 
 import model.Feedback;
 
+@Path("/Feedback")
 public class FeedbackService {
 
 	
