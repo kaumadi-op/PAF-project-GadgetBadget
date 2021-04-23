@@ -118,27 +118,78 @@ public class ResearchesRepository {
 		}
 		return output;
 	}
-	public void updateAddResearches(AddResearches researches) {
+	public String updateAddResearches(AddResearches researches) {
+		
+		String output ="";
 		
 		try {
 			Connection con = getconnection();
 			
-			String updateAddResearches = "UPDATE researches SET researcherid='"+ researches.getResearcherid()+"',Name='"+ researches.getName()+"',ContactNo='"+ researches.getContactno()+"',Email='"+ researches.getEmail()+"' WHERE id='"+researches.getResearcherid()+"'";
+			String updateAddResearches = "UPDATE `researches` SET `researcherid`='"+ researches.getResearcherid()+"',Name='"+ researches.getName()+"',ContactNo='"+ researches.getContactno()+"',Email='"+ researches.getEmail()+"' WHERE researcherid='"+researches.getResearcherid()+"'";
+			//UPDATE `researches` SET `researcherid`='"+ researches.getResearcherid()+"',Name='"+ researches.getName()+'",ContactNo='"+ researches.getContactno()+"Email='"+researches.getEmail()+"' WHERE researcherid='"+researches.getResearcherid()+"'";
 			PreparedStatement st = con.prepareStatement(updateAddResearches);
 			
 			
 			
 			st.executeUpdate();
+			output = "Update Successfully";
 			
 			con.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-
+		return output;
 		
+	}
+	public String readAddResearches() {
+		String output = "";
+		
+		try {
+			//connect to DB
+			Connection con = getconnection();
+			
+			if (con == null)
+			{return "Error while connecting to the database for reading."; }
+			output = "<table border='1'><tr><th>Researcher ID</th><th>Researcher Name</th><th>ContactNo</th><th>Email</th>" +
+			"<th>Update</th><th>Remove</th></tr>";	
+			String query = "SELECT * FROM `researches`";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			//iterate through the rows in the result set
+			while (rs.next())
+			{
+				String researcherid = Integer.toString(rs.getInt("researcherid"));
+				String name = rs.getString("Name");
+				String contactno = rs.getString("ContactNo");
+				String email = rs.getString("Email");
+				
+				//Add into the html table
+				
+				output +="<tr><td>" + researcherid + "</td>";
+				output +="<td>" + name + "</td>";
+				output +="<td>" + contactno + "</td>";
+				output +="<td>" + email + "</td>";
+				
+				//buttons
+				
+				output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
+				+ "<td><form method='post' action='items.jsp'>"	
+				+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
+				+ "<input name='itemID' type='hidden' value='" + researcherid + "'>" + "</form></td></tr>";
+										
+			}
+			//close th db connection
+			con.close();
+			
+			//complete the html table
+				output += "</table>";
+		}
+		catch (Exception e) {
+			output = "Error while reading the items.";
+			System.err.println(e.getMessage());
+		}
+		return output;
 	}
 	
 	
 }
-
-
