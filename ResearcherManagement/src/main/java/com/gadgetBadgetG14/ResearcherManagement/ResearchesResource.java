@@ -82,10 +82,10 @@ public class ResearchesResource {
 	@Path("/update") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String updateProduct(AddResearches product) 
+	public String updateAddResearches(AddResearches r1) 
 	{ 
-	// cr.updateCustomer(product); 
-	 return "Updated";
+	 
+	 return sr.updateAddResearches(r1);
 	}
 	@GET
 	@Path("/")
@@ -93,6 +93,13 @@ public class ResearchesResource {
 	public List<AddResearches> getallcustomer(){
 		return sr.getAllAddResearches();
 	}
+	
+	@GET
+	@Path("/read")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String readItems()
+	{
+		return sr.readAddResearches();
+	}
 }
-
 
