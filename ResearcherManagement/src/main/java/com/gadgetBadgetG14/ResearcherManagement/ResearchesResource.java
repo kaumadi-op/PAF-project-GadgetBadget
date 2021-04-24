@@ -102,4 +102,3 @@ public class ResearchesResource {
 		return sr.readAddResearches();
 	}
 }
-
