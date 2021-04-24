@@ -1,6 +1,7 @@
 package com.gadgetBadgetG14.ResearcherManagement;
 
 public class AddResearches {
+	//add Researcher class
 	
 	public int researcherid;
 	public String name;
