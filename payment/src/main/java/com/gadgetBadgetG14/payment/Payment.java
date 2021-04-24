@@ -4,8 +4,11 @@ public class Payment {
 	
 	public int paymentId;
 	public int amount;
-	public String payType;
-	
+	public String payDate;
+	public String cardHolder;
+	public String cardNo;
+	public int cvv;
+	public String expDate;
 	public int getPaymentId() {
 		return paymentId;
 	}
@@ -18,15 +21,42 @@ public class Payment {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	public String getPayDate() {
+		return payDate;
+	}
+	public void setPayDate(String payDate) {
+		this.payDate = payDate;
+	}
+	public String getCardHolder() {
+		return cardHolder;
+	}
+	public void setCardHolder(String cardHolder) {
+		this.cardHolder = cardHolder;
+	}
+	public String getCardNo() {
+		return cardNo;
+	}
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+	public int getCvv() {
+		return cvv;
+	}
+	public void setCvv(int cvv) {
+		this.cvv = cvv;
+	}
+	public String getExpDate() {
+		return expDate;
+	}
+	public void setExpDate(String expDate) {
+		this.expDate = expDate;
+	}
 	@Override
 	public String toString() {
-		return "Payment [paymentId=" + paymentId + ", amount=" + amount + ", payType=" + payType + "]";
+		return "Payment [paymentId=" + paymentId + ", amount=" + amount + ", payDate=" + payDate + ", cardHolder="
+				+ cardHolder + ", cardNo=" + cardNo + ", cvv=" + cvv + ", expDate=" + expDate + "]";
 	}
-	public String getPayType() {
-		return payType;
-	}
-	public void setPayType(String payType) {
-		this.payType = payType;
-	}
+	
+	
 	
 }
