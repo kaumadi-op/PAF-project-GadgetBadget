@@ -24,7 +24,7 @@ public class paymentResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Payment> getAllPayment() {	
 		
-		return pr.getAllPayments();
+		return pr.getAllPayment();
 		
 	}
 	
@@ -39,7 +39,7 @@ public class paymentResource {
 	@GET
 	@Path("/payment/{paymentId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getCities(@PathParam("paymentId") String paymentId) {   //***
+	public String getPayment(@PathParam("paymentId") String paymentId) {   //***
 		Payment res = new Payment();
 		res = pr.getpaymentId(Integer.parseInt(paymentId));
 		Gson test = new Gson();
@@ -49,7 +49,7 @@ public class paymentResource {
 	}
 	
 	@DELETE
-	@Path("/deletePayment/{paymentId}")
+	@Path("/deletePayment/{paymentID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deletePayment(@PathParam("paymentId") int paymentId) {
 		return pr.deletePayment(paymentId);
@@ -59,15 +59,21 @@ public class paymentResource {
 	@Path("/updatePayment")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String updatePayment(Payment payType) {
-		return "Updated Successfully";
+	public String updatePayment(Payment p1) {
+		return pr.updatePayment(p1);
 	}
 	
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Payment> getAllPayments() {	
-		return pr.getAllPayments();
+		return pr.getAllPayment();
 	} 
 	
+	@GET
+	@Path("/read")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String readPayRecords() {
+		return pr.readPayment();
+	}
 }
