@@ -38,48 +38,60 @@ public class FundersResource {
 	
 	return sr.createFunders(f1);
 	}
-	@GET
-	@Path("/Funders/{id}")
+	//@GET
+	//@Path("/Funders/{id}")
+	//@Produces(MediaType.APPLICATION_JSON)
+	//public String getCities(@PathParam("id") String id) {
+	//Funders res = new Funders();
+	//res = sr.getfundersid(Integer.parseInt(id));
+	//Gson test = new Gson();
+	//String jsonObject = test.toJson(res);
+	//return jsonObject;
+	//}
+
+	
+	
+	@DELETE
+	@Path("/deleteFunder/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getCities(@PathParam("id") String id) {
+	public String deleteFunders(@PathParam("id") int id) {
+		return sr.deleteFunders(id);
+	}
+	
+	@GET
+	@Path("/funders/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getCities1(@PathParam("id") String id) {
 	Funders res = new Funders();
 	res = sr.getfundersid(Integer.parseInt(id));
 	Gson test = new Gson();
 	String jsonObject = test.toJson(res);
 	return jsonObject;
 	}
-
-	@DELETE
-	@Path("/deleteFunder/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String deleteProduct(@PathParam("id") int id) {
-		return sr.deleteFunders(id);
+	
+	@GET
+	@Path("/read")
+	@Produces(MediaType.TEXT_HTML)
+	public String readItems()
+	{
+		return sr.readFundBody();
 	}
 	@PUT
 	@Path("/update") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.TEXT_PLAIN) 
-	public String updateProduct(Funders product) 
+	public String updateFunders(Funders funder) 
 	{ 
-	// cr.updateCustomer(product); 
-	 return "Updated";
+	
+	 return sr.updateFunders(funder); 
 	}
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Funders> getallcustomer(){
+	public List<Funders> getallfunders(){
 		return sr.getAllFunders();
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
