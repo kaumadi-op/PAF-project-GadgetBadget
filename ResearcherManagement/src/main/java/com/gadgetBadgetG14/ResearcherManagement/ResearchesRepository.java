@@ -111,7 +111,7 @@ public class ResearchesRepository {
 			PreparedStatement ps = con.prepareStatement(deleteAddResearches);
 			ps.execute();
 			
-			output = "Delete Successful";
+			output = "Deleted Successfully";
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -132,7 +132,7 @@ public class ResearchesRepository {
 			
 			
 			st.executeUpdate();
-			output = "Update Successfully";
+			output = "Updated Successfully";
 			
 			con.close();
 		}catch(SQLException e) {
