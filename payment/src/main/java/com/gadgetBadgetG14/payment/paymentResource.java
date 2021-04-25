@@ -51,7 +51,7 @@ public class paymentResource {
 	@DELETE
 	@Path("/deletePayment/{paymentID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String deletePayment(@PathParam("paymentId") int paymentId) {
+	public String deletePayment(@PathParam("paymentID") int paymentId) {
 		return pr.deletePayment(paymentId);
 	}
 	
